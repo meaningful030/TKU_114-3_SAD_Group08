@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>攤集｜攤位申請原型</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">攤集 <span>攤位管理原型</span></a>
+    <nav aria-label="角色切換">
+      <button class="role active" data-role="owner" aria-pressed="true">攤主</button>
+      <button class="role" data-role="organizer" aria-pressed="false">主辦方</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="ownerView" class="view">
+      <div class="hero">
+        <p class="eyebrow">第一個可操作切片 · FR-01～FR-04</p>
+        <h1>送出攤位申請</h1>
+        <p>填寫核心資料後，系統會產生申請編號並將案件送到主辦方待審清單。</p>
+      </div>
+
+      <div class="layout">
+        <form id="applicationForm" class="card" novalidate>
+          <div class="card-heading">
+            <div><span class="step">01</span><h2>攤位基本資料</h2></div>
+            <span class="required-note"><b>*</b> 必填</span>
+          </div>
+
+          <label for="boothName">攤位名稱 <b>*</b></label>
+          <input id="boothName" name="boothName" autocomplete="organization" aria-describedby="boothNameError">
+          <p class="error" id="boothNameError"></p>
+
+          <label for="category">作品類型 <b>*</b></label>
+          <select id="category" name="category" aria-describedby="categoryError">
+            <option value="">請選擇作品類型</option>
+            <option>原創漫畫</option><option>二次創作</option><option>插畫／周邊</option><option>文字創作</option>
+          </select>
+          <p class="error" id="categoryError"></p>
+
+          <label for="email">聯絡 email <b>*</b></label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" aria-describedby="emailHint emailError">
+          <p class="hint" id="emailHint">僅供本原型顯示，不會寄信或正式保存。</p>
+          <p class="error" id="emailError"></p>
+
+          <label for="note">備註 <span>選填</span></label>
+          <textarea id="note" name="note" rows="3" placeholder="可填寫展示需求；實際規則待正式訪談確認"></textarea>
+
+          <button class="primary" type="submit">送出申請 <span>→</span></button>
+        </form>
+
+        <aside class="side-card">
+          <p class="eyebrow">送出前確認</p>
+          <h2>這個切片只做一件事</h2>
+          <ol>
+            <li><span>1</span>檢查三個必填欄位</li>
+            <li><span>2</span>產生申請編號與審核中狀態</li>
+            <li><span>3</span>同步到主辦方待審清單</li>
+          </ol>
+          <div class="scope-note">不含正式登入、資料庫、通知、金流與自動排位。</div>
+        </aside>
+      </div>
+
+      <section id="successCard" class="success-card" hidden aria-live="polite">
+        <div class="check">✓</div>
+        <div><p class="eyebrow">申請已建立</p><h2 id="successId"></h2><p>送件時間：<span id="successTime"></span></p><p>目前狀態：<span class="status">審核中</span></p></div>
+        <button id="goOrganizer" class="secondary">查看主辦方待審清單 →</button>
+      </section>
+    </section>
+
+    <section id="organizerView" class="view" hidden>
+      <div class="hero organizer-hero">
+        <p class="eyebrow">主辦方工作台 · CHA-TASK-01</p>
+        <h1>待審申請</h1>
+        <p>此處只驗證攤主送件資料是否一致出現，不實作正式審核與資料保存。</p>
+      </div>
+      <div class="table-card">
+        <div class="table-heading"><div><span class="live-dot"></span> 待處理案件</div><strong id="pendingCount">0 筆</strong></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>申請編號</th><th>攤位名稱</th><th>作品類型</th><th>送件時間</th><th>狀態</th></tr></thead>
+            <tbody id="pendingBody"></tbody>
+          </table>
+        </div>
+        <p id="emptyState" class="empty">目前沒有待審申請。請切換到攤主角色送出一筆資料。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>第 8 組 · 同人誌販售會攤位管理系統 · 0713 課堂原型</footer>
+  <script src="app.js"></script>
+</body>
+</html>
+
