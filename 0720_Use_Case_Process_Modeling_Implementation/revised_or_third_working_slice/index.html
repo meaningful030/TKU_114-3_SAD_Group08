@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>攤集｜申請審核原型</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#main">攤集 <span>攤位管理原型</span></a>
+    <nav aria-label="角色切換">
+      <button class="role active" data-role="owner" aria-pressed="true">攤主</button>
+      <button class="role" data-role="organizer" aria-pressed="false">主辦方</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="ownerView" class="view">
+      <div class="hero">
+        <p class="eyebrow">第二個可操作切片 · FR-01～FR-05、FR-08</p>
+        <h1>送出申請，追蹤審核結果</h1>
+        <p>填寫核心資料後取得申請編號；主辦方完成審核後，可在同一工作階段查看最新狀態與意見。</p>
+        <p class="decision-warning"><strong>【小組決策已更新】</strong> 採用審核與狀態回查、退回意見必填、作品類型單選加「其他」、退回後修改原申請重送。攤名字數與完整正式欄位仍待確認。</p>
+      </div>
+
+      <div class="layout">
+        <form id="applicationForm" class="card" novalidate>
+          <div class="card-heading">
+            <div><span class="step">01</span><h2>攤位基本資料</h2></div>
+            <span class="required-note"><b>*</b> 必填</span>
+          </div>
+
+          <label for="boothName">攤位名稱 <b>*</b></label>
+          <input id="boothName" name="boothName" autocomplete="organization" aria-describedby="boothNameError">
+          <p class="error" id="boothNameError"></p>
+
+          <label for="category">作品類型 <b>*</b></label>
+          <select id="category" name="category" aria-describedby="categoryError">
+            <option value="">請選擇作品類型</option>
+            <option>原創漫畫</option>
+            <option>二次創作</option>
+            <option>插畫／周邊</option>
+            <option>文字創作</option>
+            <option>其他</option>
+          </select>
+          <p class="error" id="categoryError"></p>
+
+          <div id="categoryOtherGroup" hidden>
+            <label for="categoryOther">其他作品類型 <b>*</b></label>
+            <input id="categoryOther" name="categoryOther" aria-describedby="categoryOtherError" placeholder="請說明作品類型">
+            <p class="error" id="categoryOtherError"></p>
+          </div>
+
+          <label for="email">聯絡 email <b>*</b></label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" aria-describedby="emailHint emailError">
+          <p class="hint" id="emailHint">只供本原型的主辦方審核區顯示，不會寄信或正式保存。</p>
+          <p class="error" id="emailError"></p>
+
+          <label for="note">備註 <span>選填</span></label>
+          <textarea id="note" name="note" rows="3" placeholder="可填寫展示需求；實際規則待正式訪談確認"></textarea>
+
+          <button id="submitButton" class="primary" type="submit">送出申請 <span aria-hidden="true">→</span></button>
+        </form>
+
+        <aside class="side-card">
+          <p class="eyebrow">本次流程</p>
+          <h2>從送件走到審核結果</h2>
+          <ol>
+            <li><span>1</span>檢查必填欄位並建立申請</li>
+            <li><span>2</span>主辦方通過或填寫原因退回</li>
+            <li><span>3</span>攤主查看最新狀態與意見</li>
+          </ol>
+          <div class="scope-note">不含正式登入、資料庫、通知、金流、排位與地圖。</div>
+        </aside>
+      </div>
+
+      <section id="ownerStatusCard" class="status-card" hidden aria-live="polite" aria-labelledby="ownerStatusTitle">
+        <div id="ownerStatusIcon" class="check">✓</div>
+        <div class="status-content">
+          <p class="eyebrow">最新申請</p>
+          <h2 id="ownerStatusTitle"></h2>
+          <div class="status-meta">
+            <span>送件時間：<strong id="ownerStatusTime"></strong></span>
+            <span>目前狀態：<strong id="ownerStatusBadge" class="status"></strong></span>
+          </div>
+          <p id="ownerReviewNote" class="review-note" hidden></p>
+        </div>
+        <div class="status-actions">
+          <button id="editReturnedButton" class="secondary" hidden>修改原申請並重新送出</button>
+          <button id="goOrganizer" class="secondary">前往主辦方審核 <span aria-hidden="true">→</span></button>
+        </div>
+      </section>
+    </section>
+
+    <section id="organizerView" class="view" hidden>
+      <div class="hero organizer-hero">
+        <p class="eyebrow">主辦方工作台 · FR-04、FR-05</p>
+        <h1>待審申請與已審結果</h1>
+        <p>依小組決策，正式系統的所有已登入使用者可查看 email；但本原型沒有正式登入，只能示範資料顯示，不能驗證權限政策。</p>
+      </div>
+
+      <div class="table-card">
+        <div class="table-heading"><div><span class="live-dot"></span> 待審案件</div><strong id="pendingCount" aria-live="polite">0 筆待審</strong></div>
+        <div class="table-wrap">
+          <table>
+            <caption class="sr-only">狀態為審核中的待審申請</caption>
+            <thead><tr><th>申請編號</th><th>攤位名稱</th><th>作品類型</th><th>送件時間</th><th>狀態</th><th>操作</th></tr></thead>
+            <tbody id="pendingBody"></tbody>
+          </table>
+        </div>
+        <p id="emptyState" class="empty">目前沒有待審案件。請切換到攤主角色送出一筆假資料。</p>
+      </div>
+
+      <div class="table-card result-card">
+        <div class="table-heading"><div><span class="result-dot"></span> 已審結果</div><strong id="reviewedCount" aria-live="polite">0 筆已審</strong></div>
+        <div class="table-wrap">
+          <table>
+            <caption class="sr-only">狀態為通過或退回的已審結果</caption>
+            <thead><tr><th>申請編號</th><th>攤位名稱</th><th>作品類型</th><th>送件時間</th><th>狀態</th><th>操作</th></tr></thead>
+            <tbody id="reviewedBody"></tbody>
+          </table>
+        </div>
+        <p id="reviewedEmptyState" class="empty">目前沒有已審結果。</p>
+      </div>
+
+      <section id="reviewPanel" class="review-panel" hidden aria-labelledby="reviewTitle">
+        <div class="review-heading">
+          <div><p class="eyebrow" id="reviewMode">原型審核區</p><h2 id="reviewTitle" tabindex="-1">審核申請</h2></div>
+          <span id="reviewStatus" class="status"></span>
+        </div>
+        <dl class="review-data">
+          <div><dt>申請編號</dt><dd id="reviewId"></dd></div>
+          <div><dt>攤位名稱</dt><dd id="reviewBoothName"></dd></div>
+          <div><dt>作品類型</dt><dd id="reviewCategory"></dd></div>
+          <div><dt>聯絡 email</dt><dd id="reviewEmail"></dd></div>
+          <div class="wide"><dt>申請備註</dt><dd id="reviewApplicationNote"></dd></div>
+        </dl>
+
+        <label for="reviewComment">審核意見 <span>依 D-03：退回必填、通過選填</span></label>
+        <textarea id="reviewComment" rows="3" aria-describedby="reviewCommentError" placeholder="例如：請補充作品分類"></textarea>
+        <p class="error" id="reviewCommentError" aria-live="assertive"></p>
+        <div class="review-actions">
+          <button id="approveButton" class="approve" type="button">通過申請</button>
+          <button id="returnButton" class="return" type="button">退回申請</button>
+        </div>
+        <p id="reviewResult" class="review-result" aria-live="polite"></p>
+      </section>
+    </section>
+  </main>
+
+  <footer>第 8 組 · 同人誌販售會攤位管理系統 · 0714 第二個可操作切片</footer>
+  <script src="domain.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

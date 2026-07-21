@@ -1,0 +1,32 @@
+flowchart LR
+    OWNER["主要參與者<br/>攤主"]
+    ORG["主要參與者<br/>主辦方承辦人"]
+    VIS["主要參與者<br/>一般參加者"]
+
+    subgraph SYS["同人誌販售會攤位管理系統『攤集』｜需求包 0.8-draft"]
+        direction TB
+        UC01(["UC-01 提交攤位申請<br/>US-01～03｜FR-01～04"])
+        UC02(["UC-02 查詢申請狀態<br/>US-03～04｜FR-03、FR-08"])
+        UC03(["UC-03 審核攤位申請<br/>US-05～06｜FR-04～05"])
+        UC04(["UC-04 補正退回申請<br/>US-04｜FR-08"])
+        UC05(["UC-05 配置攤位位置<br/>US-07｜FR-06"])
+        UC06(["UC-06 查詢攤位位置<br/>US-08｜FR-07"])
+    end
+
+    OWNER -->|提交| UC01
+    OWNER -->|查詢| UC02
+    OWNER -->|補正| UC04
+    ORG -->|審核| UC03
+    ORG -->|配置| UC05
+    VIS -->|查詢| UC06
+
+    classDef actor fill:#f8fafc,stroke:#334155,stroke-width:2px,color:#0f172a;
+    classDef current fill:#f8fafc,stroke:#64748b,stroke-width:2px,color:#0f172a;
+    classDef highest fill:#eff6ff,stroke:#2563eb,stroke-width:3px,color:#0f172a;
+    classDef later fill:#fffbeb,stroke:#d97706,stroke-width:2px,stroke-dasharray:7 5,color:#0f172a;
+    class OWNER,ORG,VIS actor;
+    class UC01,UC02,UC04 current;
+    class UC03,UC06 highest;
+    class UC05 later;
+    style SYS fill:#ffffff,stroke:#334155,stroke-width:2px,color:#0f172a;
+

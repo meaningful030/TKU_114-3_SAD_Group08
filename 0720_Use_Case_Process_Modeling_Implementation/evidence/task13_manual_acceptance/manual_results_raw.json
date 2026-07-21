@@ -1,0 +1,81 @@
+[
+  {
+    "id": "MAT-13-01",
+    "type": "主要",
+    "actual": {
+      "pendingCount": "0 筆待審",
+      "pendingRows": 0,
+      "reviewComment": "",
+      "reviewedCount": "1 筆已審",
+      "reviewedRows": 1,
+      "status": "通過"
+    },
+    "pass": true
+  },
+  {
+    "id": "MAT-13-02",
+    "type": "主要",
+    "actual": {
+      "note": "已補充攤位展示說明",
+      "pendingCount": "1 筆待審",
+      "pendingRows": 1,
+      "reviewComment": "",
+      "reviewedCount": "0 筆已審",
+      "reviewedRows": 0,
+      "status": "審核中",
+      "sameId": true
+    },
+    "pass": true
+  },
+  {
+    "id": "MAT-13-03",
+    "type": "替代",
+    "actual": {
+      "approveDisabled": true,
+      "pendingCount": "0 筆待審",
+      "pendingRows": 0,
+      "returnDisabled": true,
+      "reviewComment": "請補充攤位展示說明",
+      "reviewedCount": "1 筆已審",
+      "reviewedRows": 1,
+      "status": "退回"
+    },
+    "pass": true
+  },
+  {
+    "id": "MAT-13-04",
+    "type": "替代",
+    "actual": {
+      "pendingRows": 0,
+      "reviewComment": "資料完整，可進入後續作業",
+      "reviewedRows": 1,
+      "status": "通過"
+    },
+    "pass": true
+  },
+  {
+    "id": "MAT-13-05",
+    "type": "例外",
+    "actual": {
+      "error": "退回申請前，請填寫審核意見。",
+      "pendingCount": "1 筆待審",
+      "pendingRows": 1,
+      "reviewedRows": 0,
+      "status": "審核中"
+    },
+    "pass": true
+  },
+  {
+    "id": "MAT-13-06",
+    "type": "例外",
+    "actual": {
+      "enteredLength": 3,
+      "error": "退回申請前，請填寫審核意見。",
+      "pendingCount": "1 筆待審",
+      "pendingRows": 1,
+      "reviewedRows": 0,
+      "status": "審核中"
+    },
+    "pass": true
+  }
+]

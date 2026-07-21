@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="3000" viewBox="0 0 2100 3000" role="img" aria-labelledby="target-title target-desc">
+  <title id="target-title">同人誌販售會申請、人工審核排位與公開靜態查攤目標泳道圖</title>
+  <desc id="target-desc">五條直式泳道為攤主、系統、主辦方承辦人、一般參加者與現場工作人員。流程從準備申請開始，保留人工審核與人工選位，加入欄位驗證、待審同步、重複格位拒絕及完整值靜態查攤，最後到找到攤位或仍無法及時確認。圖中標示五項改善、替代與例外路徑，以及待確認限制。</desc>
+  <defs>
+    <marker id="arrow-t6" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#475569"/></marker>
+    <marker id="handoff-arrow-t6" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#0f766e"/></marker>
+    <style>
+      .title { font: 600 31px "Noto Sans TC", "Microsoft JhengHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 17px "Noto Sans TC", "Microsoft JhengHei", sans-serif; fill: #475569; }
+      .lane-title { font: 600 22px "Noto Sans TC", "Microsoft JhengHei", sans-serif; fill: #0f172a; text-anchor: middle; }
+      .node-text { font: 500 17px "Noto Sans TC", "Microsoft JhengHei", sans-serif; fill: #0f172a; text-anchor: middle; }
+      .small { font: 400 14px "Noto Sans TC", "Microsoft JhengHei", sans-serif; fill: #475569; text-anchor: middle; }
+      .edge-label { font: 600 14px "Noto Sans TC", "Microsoft JhengHei", sans-serif; fill: #334155; text-anchor: middle; }
+      .handoff-label { font: 600 14px "Noto Sans TC", "Microsoft JhengHei", sans-serif; fill: #0f766e; text-anchor: middle; }
+      .improve-title { font: 600 15px "Noto Sans TC", "Microsoft JhengHei", sans-serif; fill: #065f46; text-anchor: middle; }
+      .improve-text { font: 400 13px "Noto Sans TC", "Microsoft JhengHei", sans-serif; fill: #065f46; text-anchor: middle; }
+      .note-text { font: 400 13px "Noto Sans TC", "Microsoft JhengHei", sans-serif; fill: #5b21b6; text-anchor: middle; }
+      .manual { fill: #ffffff; stroke: #64748b; stroke-width: 2.2; }
+      .system { fill: #eff6ff; stroke: #2563eb; stroke-width: 2.3; }
+      .decision { fill: #fffbeb; stroke: #d97706; stroke-width: 2.5; }
+      .exception { fill: #fff1f2; stroke: #be123c; stroke-width: 2.1; }
+      .startend { fill: #f0fdf4; stroke: #15803d; stroke-width: 2.7; }
+      .altend { fill: #faf5ff; stroke: #7e22ce; stroke-width: 2.4; }
+      .improve { fill: #ecfdf5; stroke: #059669; stroke-width: 2.1; }
+      .note { fill: #faf5ff; stroke: #7c3aed; stroke-width: 1.8; stroke-dasharray: 6 4; }
+      .flow { fill: none; stroke: #475569; stroke-width: 2.3; marker-end: url(#arrow-t6); }
+      .handoff { fill: none; stroke: #0f766e; stroke-width: 2.6; stroke-dasharray: 9 6; marker-end: url(#handoff-arrow-t6); }
+      .improvelink { fill: none; stroke: #059669; stroke-width: 1.7; stroke-dasharray: 5 4; }
+    </style>
+  </defs>
+
+  <rect width="2100" height="3000" fill="#ffffff"/>
+  <text class="title" x="1050" y="47" text-anchor="middle">目標：系統輔助收件與查攤，保留人工審核及排位</text>
+  <text class="subtitle" x="1050" y="77" text-anchor="middle">需求包 0.8-draft／2026-07-15｜同任務 5 範圍｜綠色＝改善、藍色＝系統責任、白色＝人工責任</text>
+  <text class="subtitle" x="1050" y="105" text-anchor="middle">FR-06／FR-07 為本期目標能力，不代表第二個可操作切片已完成；正式登入、自動排位與自動通知不在範圍</text>
+
+  <!-- Swimlane backgrounds -->
+  <rect x="20" y="130" width="320" height="2830" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="340" y="130" width="700" height="2830" fill="#f8fbff" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="1040" y="130" width="380" height="2830" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="1420" y="130" width="340" height="2830" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="1760" y="130" width="320" height="2830" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="20" y="130" width="320" height="62" fill="#e2e8f0"/>
+  <rect x="340" y="130" width="700" height="62" fill="#dbeafe"/>
+  <rect x="1040" y="130" width="380" height="62" fill="#e2e8f0"/>
+  <rect x="1420" y="130" width="340" height="62" fill="#e2e8f0"/>
+  <rect x="1760" y="130" width="320" height="62" fill="#e2e8f0"/>
+  <text class="lane-title" x="180" y="171">攤主</text>
+  <text class="lane-title" x="690" y="171">系統</text>
+  <text class="lane-title" x="1230" y="171">主辦方承辦人</text>
+  <text class="lane-title" x="1590" y="171">一般參加者</text>
+  <text class="lane-title" x="1920" y="171">現場工作人員</text>
+
+  <!-- Paths behind nodes: intake -->
+  <path class="flow" d="M180 262 L180 290"/>
+  <path class="handoff" d="M315 325 L490 325"/>
+  <path class="flow" d="M690 360 L690 380"/>
+  <path class="handoff" d="M620 430 L315 430"/>
+  <path class="flow" d="M180 465 L30 465 L30 325 L45 325"/>
+  <path class="flow" d="M690 480 L690 520"/>
+  <path class="handoff" d="M490 560 L315 570"/>
+  <path class="handoff" d="M890 560 L1075 570"/>
+  <path class="flow" d="M1230 605 L1230 625"/>
+
+  <!-- Review branches -->
+  <path class="handoff" d="M1160 680 L520 680 L520 745"/>
+  <path class="handoff" d="M1300 680 L1375 680 L1375 1068 L1020 1068"/>
+  <path class="flow" d="M520 855 L520 900"/>
+  <path class="flow" d="M590 800 L860 800 L860 900"/>
+  <path class="handoff" d="M675 937 L1075 937"/>
+  <path class="flow" d="M1230 900 L1375 900 L1375 680 L1300 680"/>
+  <path class="handoff" d="M700 937 L315 1065"/>
+  <path class="flow" d="M180 1100 L180 1105"/>
+  <path class="flow" d="M180 1215 L180 1260"/>
+  <path class="flow" d="M110 1160 L25 1160 L25 1430 L80 1430"/>
+  <path class="handoff" d="M315 1297 L355 1297"/>
+  <path class="handoff" d="M675 1297 L1030 1297 L1030 570 L1075 570"/>
+  <path class="handoff" d="M1020 1068 L1075 1187"/>
+
+  <!-- Placement and temporary adjustment -->
+  <path class="handoff" d="M1075 1187 L850 1187 L850 1245"/>
+  <path class="flow" d="M780 1300 L515 1300 L515 1400"/>
+  <path class="flow" d="M850 1355 L850 1400"/>
+  <path class="handoff" d="M675 1437 L1075 1437"/>
+  <path class="flow" d="M1230 1400 L1375 1400 L1375 1187 L1385 1187"/>
+  <path class="handoff" d="M850 1475 L1160 1580"/>
+  <path class="flow" d="M1230 1635 L1230 1680"/>
+  <path class="handoff" d="M1075 1717 L1025 1717 L1025 1300 L920 1300"/>
+  <path class="handoff" d="M1160 1580 L940 1580 L940 1725 L890 1725"/>
+
+  <!-- Publication and lookup -->
+  <path class="handoff" d="M490 1725 L315 1835"/>
+  <path class="handoff" d="M890 1715 L1445 1835"/>
+  <path class="handoff" d="M890 1735 L1780 1835"/>
+  <path class="handoff" d="M1445 1835 L1040 1835 L1040 1950 L760 1950"/>
+  <path class="flow" d="M620 1950 L515 1950 L515 2050"/>
+  <path class="flow" d="M690 2005 L860 2050"/>
+  <path class="handoff" d="M675 2090 L1445 2195"/>
+  <path class="flow" d="M1590 2230 L1760 2230 L1760 1835 L1735 1835"/>
+  <path class="handoff" d="M1020 2090 L1445 2295"/>
+  <path class="flow" d="M1590 2330 L1590 2340"/>
+  <path class="flow" d="M1590 2440 L1590 2788"/>
+  <path class="handoff" d="M1660 2390 L1780 2415"/>
+  <path class="flow" d="M1920 1870 L1920 2380"/>
+  <path class="flow" d="M1920 2450 L1920 2460"/>
+  <path class="flow" d="M1920 2560 L1920 2600"/>
+  <path class="flow" d="M1990 2510 L2055 2510 L2055 2735 L2060 2735"/>
+  <path class="handoff" d="M1780 2635 L1715 2635 L1715 2830"/>
+  <path class="flow" d="M1920 2770 L1920 2810"/>
+
+  <!-- Improvement links -->
+  <path class="improvelink" d="M315 680 L490 560"/>
+  <path class="improvelink" d="M770 430 L760 430"/>
+  <path class="improvelink" d="M675 1525 L515 1475"/>
+  <path class="improvelink" d="M690 1845 L690 1770"/>
+  <path class="improvelink" d="M860 2205 L860 2130"/>
+
+  <!-- Owner nodes -->
+  <g><ellipse class="startend" cx="180" cy="230" rx="92" ry="32"/><text class="node-text" x="180" y="226"><tspan x="180">開始</tspan><tspan class="small" x="180" dy="20">準備申請</tspan></text></g>
+  <g><rect class="manual" x="45" y="290" width="270" height="70" rx="12"/><text class="node-text" x="180" y="318"><tspan x="180">T-C1 填寫並送出</tspan><tspan x="180" dy="22">攤位申請</tspan></text></g>
+  <g><rect class="manual" x="45" y="395" width="270" height="70" rx="12"/><text class="node-text" x="180" y="423"><tspan x="180">T-C2 依欄位提示</tspan><tspan x="180" dy="22">修正資料</tspan></text></g>
+  <g><rect class="manual" x="45" y="535" width="270" height="70" rx="12"/><text class="node-text" x="180" y="562"><tspan x="180">T-C3 查看編號、時間</tspan><tspan x="180" dy="22">與「審核中」</tspan></text></g>
+  <g><rect class="manual" x="45" y="1030" width="270" height="70" rx="12"/><text class="node-text" x="180" y="1058"><tspan x="180">T-C4 查看結果</tspan><tspan x="180" dy="22">與完整意見</tspan></text></g>
+  <g><polygon class="decision" points="180,1105 250,1160 180,1215 110,1160"/><text class="node-text" x="180" y="1155"><tspan x="180">T-D3 是否</tspan><tspan x="180" dy="21">立即補正？</tspan></text></g>
+  <g><rect class="manual" x="45" y="1260" width="270" height="75" rx="12"/><text class="node-text" x="180" y="1288"><tspan x="180">T-C5 修改原申請</tspan><tspan class="small" x="180" dy="23">同編號重送</tspan></text></g>
+  <g><ellipse class="altend" cx="180" cy="1430" rx="100" ry="42"/><text class="node-text" x="180" y="1425"><tspan x="180">替代結束</tspan><tspan class="small" x="180" dy="22">維持退回，日後補正</tspan></text></g>
+  <g><rect class="manual" x="45" y="1800" width="270" height="70" rx="12"/><text class="node-text" x="180" y="1828"><tspan x="180">T-C6 等待／查看</tspan><tspan x="180" dy="22">位置公告</tspan></text></g>
+
+  <!-- System nodes -->
+  <g><rect class="system" x="490" y="290" width="400" height="70" rx="12"/><text class="node-text" x="690" y="318"><tspan x="690">T-S1 驗證必填與目前已確認格式</tspan><tspan class="small" x="690" dy="22">系統責任｜FR-02</tspan></text></g>
+  <g><polygon class="decision" points="690,380 760,430 690,480 620,430"/><text class="node-text" x="690" y="425"><tspan x="690">T-D1 資料</tspan><tspan x="690" dy="21">有效？</tspan></text></g>
+  <g><rect class="system" x="490" y="520" width="400" height="80" rx="12"/><text class="node-text" x="690" y="547"><tspan x="690">T-S2 建立編號、時間與審核中</tspan><tspan x="690" dy="22">並同步主辦方待審清單</tspan><tspan class="small" x="690" dy="20">FR-03～FR-04</tspan></text></g>
+  <g><polygon class="decision" points="520,745 590,800 520,855 450,800"/><text class="node-text" x="520" y="795"><tspan x="520">T-D2 退回意見</tspan><tspan x="520" dy="21">有效？</tspan></text></g>
+  <g><rect class="exception" x="355" y="900" width="320" height="75" rx="12"/><text class="node-text" x="515" y="927"><tspan x="515">T-S3 拒絕退回</tspan><tspan class="small" x="515" dy="22">保持審核中與待審筆數</tspan></text></g>
+  <g><rect class="system" x="700" y="900" width="320" height="75" rx="12"/><text class="node-text" x="860" y="927"><tspan x="860">T-S4 保存退回</tspan><tspan class="small" x="860" dy="22">與完整審核意見</tspan></text></g>
+  <g><rect class="system" x="700" y="1030" width="320" height="75" rx="12"/><text class="node-text" x="860" y="1057"><tspan x="860">T-S5 保存通過結果</tspan><tspan class="small" x="860" dy="22">並移出待審清單</tspan></text></g>
+  <g><rect class="system" x="355" y="1260" width="320" height="75" rx="12"/><text class="node-text" x="515" y="1287"><tspan x="515">T-S6 同編號重送</tspan><tspan class="small" x="515" dy="22">次數 +1，回到審核中</tspan></text></g>
+  <g><polygon class="decision" points="850,1245 920,1300 850,1355 780,1300"/><text class="node-text" x="850" y="1295"><tspan x="850">T-D4 格位</tspan><tspan x="850" dy="21">已占用？</tspan></text></g>
+  <g><rect class="exception" x="355" y="1400" width="320" height="75" rx="12"/><text class="node-text" x="515" y="1427"><tspan x="515">T-S7 拒絕新配置</tspan><tspan class="small" x="515" dy="22">保留原配置｜例外 E3</tspan></text></g>
+  <g><rect class="system" x="700" y="1400" width="300" height="75" rx="12"/><text class="node-text" x="850" y="1427"><tspan x="850">T-S8 保存</tspan><tspan x="850" dy="22">人工選定配置</tspan></text></g>
+  <g><rect class="system" x="490" y="1680" width="400" height="90" rx="12"/><text class="node-text" x="690" y="1707"><tspan x="690">T-S9 由同一配置資料提供</tspan><tspan x="690" dy="22">公開結果文字與靜態地圖標記</tspan><tspan class="small" x="690" dy="20">不含 email｜FR-07、BR-06</tspan></text></g>
+  <g><polygon class="decision" points="690,1895 760,1950 690,2005 620,1950"/><text class="node-text" x="690" y="1945"><tspan x="690">T-D6 有完整值</tspan><tspan x="690" dy="21">相符資料？</tspan></text></g>
+  <g><rect class="exception" x="355" y="2050" width="320" height="80" rx="12"/><text class="node-text" x="515" y="2077"><tspan x="515">T-S10 顯示 0 筆</tspan><tspan class="small" x="515" dy="22">無結果並清除舊標記</tspan></text></g>
+  <g><rect class="system" x="700" y="2050" width="320" height="80" rx="12"/><text class="node-text" x="860" y="2077"><tspan x="860">T-S11 顯示文字位置</tspan><tspan class="small" x="860" dy="22">與一致標記；不顯示 email</tspan></text></g>
+
+  <!-- Organizer nodes -->
+  <g><rect class="manual" x="1075" y="535" width="310" height="70" rx="12"/><text class="node-text" x="1230" y="562"><tspan x="1230">T-O1 開啟待審案件</tspan><tspan class="small" x="1230" dy="22">人工閱讀與判斷</tspan></text></g>
+  <g><polygon class="decision" points="1230,625 1300,680 1230,735 1160,680"/><text class="node-text" x="1230" y="675"><tspan x="1230">T-D2a 通過</tspan><tspan x="1230" dy="21">或退回？</tspan></text></g>
+  <g><rect class="manual" x="1075" y="900" width="310" height="75" rx="12"/><text class="node-text" x="1230" y="927"><tspan x="1230">T-O3 補填有效</tspan><tspan class="small" x="1230" dy="22">退回意見後重試</tspan></text></g>
+  <g><rect class="manual" x="1075" y="1150" width="310" height="75" rx="12"/><text class="node-text" x="1230" y="1177"><tspan x="1230">T-O4 人工選擇</tspan><tspan class="small" x="1230" dy="22">攤位格位</tspan></text></g>
+  <g><rect class="manual" x="1075" y="1400" width="310" height="75" rx="12"/><text class="node-text" x="1230" y="1427"><tspan x="1230">T-O5 人工改選</tspan><tspan class="small" x="1230" dy="22">其他格位</tspan></text></g>
+  <g><polygon class="decision" points="1230,1525 1300,1580 1230,1635 1160,1580"/><text class="node-text" x="1230" y="1575"><tspan x="1230">T-D5 需臨時</tspan><tspan x="1230" dy="21">調整？</tspan></text></g>
+  <g><rect class="manual" x="1075" y="1680" width="310" height="75" rx="12"/><text class="node-text" x="1230" y="1707"><tspan x="1230">T-O6 人工修改配置</tspan><tspan class="small" x="1230" dy="22">再做同格衝突檢查</tspan></text></g>
+
+  <!-- Attendee nodes -->
+  <g><rect class="manual" x="1445" y="1800" width="290" height="70" rx="12"/><text class="node-text" x="1590" y="1828"><tspan x="1590">T-A1 輸入完整攤名／編號</tspan><tspan class="small" x="1590" dy="22">或完整作品類型</tspan></text></g>
+  <g><rect class="manual" x="1445" y="2160" width="290" height="70" rx="12"/><text class="node-text" x="1590" y="2188"><tspan x="1590">T-A2 修正完整值</tspan><tspan class="small" x="1590" dy="22">或轉人工詢問</tspan></text></g>
+  <g><rect class="manual" x="1445" y="2260" width="290" height="70" rx="12"/><text class="node-text" x="1590" y="2288"><tspan x="1590">T-A3 依文字位置</tspan><tspan class="small" x="1590" dy="22">與靜態標記前往</tspan></text></g>
+  <g><polygon class="decision" points="1590,2340 1660,2390 1590,2440 1520,2390"/><text class="node-text" x="1590" y="2385"><tspan x="1590">T-D7 現場</tspan><tspan x="1590" dy="21">能找到？</tspan></text></g>
+  <g><ellipse class="startend" cx="1590" cy="2830" rx="125" ry="42"/><text class="node-text" x="1590" y="2825"><tspan x="1590">結束 A</tspan><tspan class="small" x="1590" dy="22">找到攤位</tspan></text></g>
+
+  <!-- Staff nodes -->
+  <g><rect class="manual" x="1780" y="1800" width="280" height="70" rx="12"/><text class="node-text" x="1920" y="1828"><tspan x="1920">T-F1 使用同一公開</tspan><tspan class="small" x="1920" dy="22">靜態配置</tspan></text></g>
+  <g><rect class="manual" x="1780" y="2380" width="280" height="70" rx="12"/><text class="node-text" x="1920" y="2408"><tspan x="1920">T-F2 接受參加者</tspan><tspan class="small" x="1920" dy="22">口頭詢問</tspan></text></g>
+  <g><polygon class="decision" points="1920,2460 1990,2510 1920,2560 1850,2510"/><text class="node-text" x="1920" y="2505"><tspan x="1920">T-D8 能確認</tspan><tspan x="1920" dy="21">位置？</tspan></text></g>
+  <g><rect class="manual" x="1780" y="2600" width="280" height="70" rx="12"/><text class="node-text" x="1920" y="2628"><tspan x="1920">T-F3 口頭指引</tspan><tspan class="small" x="1920" dy="22">參加者</tspan></text></g>
+  <g><rect class="manual" x="1780" y="2700" width="280" height="70" rx="12"/><text class="node-text" x="1920" y="2728"><tspan x="1920">T-F4 回問主辦方</tspan><tspan class="small" x="1920" dy="22">或現場查證</tspan></text></g>
+  <g><ellipse class="altend" cx="1920" cy="2850" rx="140" ry="42"/><text class="node-text" x="1920" y="2845"><tspan x="1920">結束 B</tspan><tspan class="small" x="1920" dy="22">仍無法及時確認</tspan></text></g>
+
+  <!-- Improvement badges -->
+  <g><rect class="improve" x="45" y="650" width="270" height="60" rx="11"/><text x="180" y="674"><tspan class="improve-title" x="180">改善 I1｜對應 P1</tspan><tspan class="improve-text" x="180" dy="20">即時收件、狀態與結果可查</tspan></text></g>
+  <g><rect class="improve" x="770" y="395" width="250" height="70" rx="11"/><text x="895" y="420"><tspan class="improve-title" x="895">改善 I2｜對應 P2</tspan><tspan class="improve-text" x="895" dy="20">驗證後直接同步待審</tspan><tspan class="improve-text" x="895" dy="18">不再人工搬入試算表</tspan></text></g>
+  <g><rect class="improve" x="355" y="1495" width="320" height="60" rx="11"/><text x="515" y="1519"><tspan class="improve-title" x="515">改善 I3｜對應 P3</tspan><tspan class="improve-text" x="515" dy="20">重複格位拒絕；原配置保留</tspan></text></g>
+  <g><rect class="improve" x="490" y="1800" width="400" height="60" rx="11"/><text x="690" y="1824"><tspan class="improve-title" x="690">改善 I4｜對應 P4（部分改善）</tspan><tspan class="improve-text" x="690" dy="20">結果文字與靜態標記使用同一配置資料</tspan></text></g>
+  <g><rect class="improve" x="700" y="2160" width="320" height="60" rx="11"/><text x="860" y="2184"><tspan class="improve-title" x="860">改善 I5｜對應 P5</tspan><tspan class="improve-text" x="860" dy="20">完整值查攤；查無與人工備援</tspan></text></g>
+
+  <!-- Scope notes -->
+  <g><rect class="note" x="1075" y="785" width="310" height="70" rx="11"/><text x="1230" y="811"><tspan class="note-text" x="1230">人工審核與角色責任保留</tspan><tspan class="note-text" x="1230" dy="20">正式登入／撤銷／權限：UQ-04</tspan><tspan class="note-text" x="1230" dy="18">本圖不視為已完成技術權限</tspan></text></g>
+  <g><rect class="note" x="1075" y="1785" width="310" height="78" rx="11"/><text x="1230" y="1810"><tspan class="note-text" x="1230">保留人工排位；不做自動排位</tspan><tspan class="note-text" x="1230" dy="20">BR-05 強制前置仍待 UQ-05</tspan><tspan class="note-text" x="1230" dy="18">紙本／社群副本不保證同步</tspan></text></g>
+
+  <!-- Edge labels -->
+  <text class="handoff-label" x="400" y="312">H1 送件</text>
+  <text class="edge-label" x="585" y="418">否／E1</text><text class="edge-label" x="735" y="503">是</text>
+  <text class="handoff-label" x="398" y="545">H2 收件結果</text>
+  <text class="handoff-label" x="980" y="545">H3 待審資料</text>
+  <text class="edge-label" x="1045" y="666">退回</text><text class="edge-label" x="1340" y="666">通過</text>
+  <text class="edge-label" x="500" y="875">否／E2</text><text class="edge-label" x="685" y="786">是</text>
+  <text class="edge-label" x="265" y="1150">否／A1</text><text class="edge-label" x="202" y="1238">是</text>
+  <text class="edge-label" x="720" y="1288">是／E3</text><text class="edge-label" x="875" y="1380">否</text>
+  <text class="edge-label" x="1260" y="1660">是</text><text class="edge-label" x="1080" y="1568">否</text>
+  <text class="handoff-label" x="1450" y="1775">H4 公開配置</text>
+  <text class="handoff-label" x="1240" y="1822">H5 完整值查詢</text>
+  <text class="edge-label" x="585" y="1938">否／E4</text><text class="edge-label" x="785" y="2015">是</text>
+  <text class="edge-label" x="1500" y="2460">是</text><text class="edge-label" x="1690" y="2378">否</text>
+  <text class="edge-label" x="1880" y="2585">能</text><text class="edge-label" x="2030" y="2498">不能</text>
+</svg>
